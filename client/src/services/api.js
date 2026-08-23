@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+//const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = "https://smart-fertilizer-distribution-system.onrender.com";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -21,4 +22,5 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-export default api;
+// export default api;
+export default API_BASE_URL;
