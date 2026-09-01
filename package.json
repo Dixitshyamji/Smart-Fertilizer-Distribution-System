@@ -1,0 +1,19 @@
+{
+  "name": "smart-fertilizer-system",
+  "version": "1.0.0",
+  "description": "Smart Fertilizer Distribution System - Full Stack MERN Application",
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build",
+    "start": "cd server && node server.js",
+    "dev": "cd server && npm run dev",
+    "seed": "cd server && node src/utils/resetDb.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dixitshyamji/Smart-Fertilizer-Distribution-System"
+  }
+}

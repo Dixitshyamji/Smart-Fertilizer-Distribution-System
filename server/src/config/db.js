@@ -49,7 +49,10 @@ const connectDB = async () => {
 
     const conn = await mongoose.connect(uri, {
       dbName: process.env.DB_NAME || 'smart_fertilizer_db',
-      serverSelectionTimeoutMS: 7000
+      serverSelectionTimeoutMS: 7000,
+      maxPoolSize: 10,
+      socketTimeoutMS: 45000,
+      autoIndex: process.env.NODE_ENV !== 'production'
     });
 
     console.log(`✅ MongoDB Atlas Connected: ${conn.connection.host} / Database: ${conn.connection.name}`);
