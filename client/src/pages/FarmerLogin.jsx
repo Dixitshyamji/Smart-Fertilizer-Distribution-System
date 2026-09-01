@@ -349,13 +349,23 @@
 
 // export default FarmerLogin;
 import React, { useState } from 'react';
-import api from '../services/api'; // Path verify karein ki api.js ko point kar raha hai
+// 1. services folder se api helper import karein
+import api from '../services/api';
 
 const FarmerLogin = () => {
-  const [aadhaarNumber, setAadhaarNumber] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [formData, setFormData] = useState({
+    identifier: '',
+    password: ''
+  });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -363,24 +373,22 @@ const FarmerLogin = () => {
     setErrorMessage('');
 
     try {
-      // ✅ api.post relative endpoint call karega jo baseURL se judega
+      // 2. api.post automatically baseURL (Render backend) par request bhejega
       const response = await api.post('/auth/farmer/login', {
-        aadhaarNumber: aadhaarNumber.trim(),
-        mobileNumber: mobileNumber.trim(),
+        identifier: formData.identifier.trim(),
+        password: formData.password.trim()
       });
 
       if (response.data && response.data.token) {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('farmer', JSON.stringify(response.data.farmer || response.data.user));
+        localStorage.setItem('farmer', JSON.stringify(response.data.farmer));
         alert('Farmer Login Successful!');
-        window.location.href = '/farmer/dashboard';
+        window.location.href = '/farmer-dashboard';
       }
     } catch (err) {
-      console.error('Login Error:', err);
+      console.error('Login error:', err);
       setErrorMessage(
-        err.response?.data?.message ||
-        err.message ||
-        'Server not reachable. Please check your internet connection.'
+        err.response?.data?.message || 'Server se connect nahi ho paya. Please check credentials.'
       );
     } finally {
       setLoading(false);
@@ -388,30 +396,37 @@ const FarmerLogin = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '40px auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
+    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
       <h2>Farmer Login</h2>
-      {errorMessage && <p style={{ color: 'red', fontWeight: 'bold' }}>{errorMessage}</p>}
       
+      {errorMessage && (
+        <div style={{ color: 'red', marginBottom: '10px', fontSize: '14px' }}>
+          {errorMessage}
+        </div>
+      )}
+
       <form onSubmit={handleLogin}>
         <div style={{ marginBottom: '15px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Aadhaar Number:</label>
+          <label style={{ display: 'block', marginBottom: '5px' }}>Farmer ID / Mobile / Unique ID:</label>
           <input
             type="text"
-            value={aadhaarNumber}
-            onChange={(e) => setAadhaarNumber(e.target.value)}
-            placeholder="Enter 12-digit Aadhaar"
+            name="identifier"
+            value={formData.identifier}
+            onChange={handleChange}
+            placeholder="Enter Mobile or ID"
             required
             style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
           />
         </div>
 
         <div style={{ marginBottom: '15px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Mobile Number:</label>
+          <label style={{ display: 'block', marginBottom: '5px' }}>Password:</label>
           <input
-            type="tel"
-            value={mobileNumber}
-            onChange={(e) => setMobileNumber(e.target.value)}
-            placeholder="Enter 10-digit Mobile"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter Password"
             required
             style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
           />
@@ -420,9 +435,17 @@ const FarmerLogin = () => {
         <button
           type="submit"
           disabled={loading}
-          style={{ width: '100%', padding: '10px', backgroundColor: '#2e7d32', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+          style={{
+            width: '100%',
+            padding: '10px',
+            backgroundColor: '#2e7d32',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: loading ? 'not-allowed' : 'pointer'
+          }}
         >
-          {loading ? 'Authenticating...' : 'Login'}
+          {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
     </div>
