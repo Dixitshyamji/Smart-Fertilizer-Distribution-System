@@ -141,7 +141,7 @@ const BookFertilizer = () => {
     <div style={styles.container}>
       
       {/* Top Banner Notice: Multiple Installment Allocation */}
-      <div style={styles.infoBanner} className="float-element">
+      <div style={styles.infoBanner} className="">
         <div>
           <h3 style={styles.infoTitle}>🌾 Multiple Installment Allocation Allowed</h3>
           <p style={styles.infoDesc}>
