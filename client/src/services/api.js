@@ -58,7 +58,7 @@ const API = axios.create({
   },
 });
 
-// ⬇️ ये block होना ZAROORI hai — token ko automatically har request me attach karta hai
+// Har request ke saath saved token automatically header me attach karega
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
