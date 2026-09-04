@@ -132,7 +132,7 @@ const HomePage = () => {
         {/* Government badge */}
         <div style={styles.govBadge}>
           <span style={styles.govDot} />
-          Ministry of Agriculture & Farmers Welfare — Govt. of India
+          Agri-Resource Management & Distribution System
         </div>
 
         {/* Hero emblem */}
@@ -216,9 +216,9 @@ const HomePage = () => {
         {showButtons && (
           <div style={styles.statsRow}>
             {[
-              { label: 'Districts Covered', value: '12+' },
-              { label: 'Registered Farmers', value: '5,000+' },
-              { label: 'Bags Distributed', value: '1.2L+' },
+              { label: 'Districts Covered', value: '1+' },
+              { label: 'Registered Farmers', value: '5+' },
+              { label: 'Bags Distributed', value: '1k+' },
               { label: 'Verification Rate', value: '99.8%' },
             ].map((s, i) => (
               <div key={i} style={styles.statItem}>
