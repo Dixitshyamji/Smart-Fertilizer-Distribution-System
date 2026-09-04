@@ -370,7 +370,7 @@ const FarmerLogin = () => {
 
     try {
       // >>> CHANGED: '/auth/farmer/login' → '/api/auth/farmer/login' <
-      const response = await api.post('/api/auth/farmer/login', {
+      const response = await api.post('/auth/farmer/login', {
         identifier: identifier.trim(),
         mobile: identifier.trim(),
         password
