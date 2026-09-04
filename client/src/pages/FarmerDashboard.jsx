@@ -65,7 +65,7 @@ const FarmerDashboard = () => {
       </div>
 
       {/* Info Notice Banner */}
-      <div style={styles.noticeBanner} className="float-element">
+      <div style={styles.noticeBanner} className="">
         💡 <strong>Multiple Partial Bookings Allowed:</strong> You can book part of your quota today (e.g. 10 bags) and book remaining bags later whenever required!
       </div>
 
