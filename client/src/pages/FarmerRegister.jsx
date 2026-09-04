@@ -267,7 +267,7 @@ const FarmerRegister = () => {
 
     try {
       // >>> CHANGED: '/auth/farmer/register' → '/api/auth/farmer/register' <
-      const response = await api.post('/api/auth/farmer/register', formData);
+      const response = await api.post('/auth/farmer/register', formData);
       if (response.data.status === 'SUCCESS') {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('farmer', JSON.stringify(response.data.farmer));
