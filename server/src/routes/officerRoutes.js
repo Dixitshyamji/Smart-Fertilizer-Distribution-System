@@ -1,12 +1,4 @@
-// const express = require('express');
-// const router = express.Router();
-// const { verifyToken, fulfillBooking } = require('../controllers/officerController');
-// const { protect } = require('../middleware/authMiddleware');
 
-// router.post('/verify-token', protect, verifyToken);
-// router.post('/fulfill-booking', protect, fulfillBooking);
-
-// module.exports = router;
 const express = require('express');
 const router = express.Router();
 const { verifyToken, fulfillBooking } = require('../controllers/officerController');
