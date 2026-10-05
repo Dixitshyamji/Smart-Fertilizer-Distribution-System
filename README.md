@@ -44,49 +44,50 @@ Security: JSON Web Tokens (JWT) for role-based session control, bcrypt for passw
 
 🗂️ Project Directory Structure
 
+```text
 smart-fertilizer-system/
-│
-├── client/                                # React Frontend (Vite)
+├── client/
 │   ├── public/
 │   │   ├── favicon.ico
 │   │   └── index.html
 │   ├── src/
-│   │   ├── assets/                        # Static logos, images, vectors
-│   │   ├── components/                    # Reusable UI components
+│   │   ├── assets/
+│   │   ├── components/
 │   │   │   ├── Navbar.jsx
 │   │   │   └── ProtectedRoute.jsx
-│   │   ├── pages/                         # Core view components
-│   │   │   ├── FarmerLogin.jsx            # Authentication entry
-│   │   │   ├── BookFertilizer.jsx         # Partial & full quota booking
-│   │   │   ├── FarmerDashboard.jsx        # Remaining quota & active QR passes
-│   │   │   └── AdminDashboard.jsx         # Regional stock & telemetry
+│   │   ├── pages/
+│   │   │   ├── FarmerLogin.jsx
+│   │   │   ├── BookFertilizer.jsx
+│   │   │   ├── FarmerDashboard.jsx
+│   │   │   └── AdminDashboard.jsx
 │   │   ├── services/
-│   │   │   └── api.js                     # Axios HTTP endpoints config
-│   │   ├── App.jsx                        # Route hierarchy
-│   │   ├── index.css                      # Global styling
-│   │   └── main.jsx                       # React DOM root entry
-│   ├── .env                               # Client environment variables
-│   ├── .gitignore                         # Client build ignores
+│   │   │   └── api.js
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── .env
+│   ├── .gitignore
 │   ├── package.json
 │   └── vite.config.js
 │
-├── server/                                # Express.js Backend API
+├── server/
 │   ├── database/
-│   │   └── schema.sql                     # MySQL tables, relations & seeds
+│   │   └── schema.sql
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── db.js                      # MySQL connection pool
+│   │   │   └── db.js
 │   │   ├── controllers/
-│   │   │   ├── authController.js          # Farmer/Admin authentication
-│   │   │   └── bookingController.js       # Quota calculation & collection logic
+│   │   │   ├── authController.js
+│   │   │   └── bookingController.js
 │   │   ├── middleware/
-│   │   │   └── authMiddleware.js          # JWT & Role-Based Access Control
+│   │   │   └── authMiddleware.js
 │   │   ├── routes/
-│   │   │   ├── authRoutes.js              # Auth endpoints
-│   │   │   └── bookingRoutes.js           # Multi-stage booking & QR routes
-│   │   └── server.js                      # App server initialization
-│   ├── .env                               # Database credentials & JWT secret
-│   ├── .gitignore                         # Server node_modules & env ignores
+│   │   │   ├── authRoutes.js
+│   │   │   └── bookingRoutes.js
+│   │   └── server.js
+│   ├── .env
+│   ├── .gitignore
 │   └── package.json
 │
-└── README.md                              # Complete system documentation 
+└── README.md
+
