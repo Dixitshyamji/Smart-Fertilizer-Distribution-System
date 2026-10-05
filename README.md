@@ -45,46 +45,48 @@ Security: JSON Web Tokens (JWT) for role-based session control, bcrypt for passw
 🗂️ Project Directory Structure
 
 smart-fertilizer-system/
-├── client/                     # React Frontend
+│
+├── client/                                # React Frontend (Vite)
 │   ├── public/
 │   │   ├── favicon.ico
 │   │   └── index.html
 │   ├── src/
-│   │   ├── assets/             # Static logos, images, vectors
-│   │   ├── components/         # Shared UI components (Navbar, ProtectedRoute)
-│   │   │   └── Navbar.jsx
-│   │   ├── pages/              # Primary view pages
-│   │   │   ├── FarmerLogin.jsx
-│   │   │   ├── BookFertilizer.jsx
-│   │   │   ├── FarmerDashboard.jsx
-│   │   │   └── AdminDashboard.jsx
-│   │   ├── services/           # API handlers & Axios configuration
-│   │   │   └── api.js
-│   │   ├── App.jsx             # Main router configuration
-│   │   ├── index.css           # Global application styles
-│   │   └── main.jsx            # Entry point
-│   ├── .env                    # Frontend environment variables
-│   ├── .gitignore              # Client gitignore rule definitions
+│   │   ├── assets/                        # Static logos, images, vectors
+│   │   ├── components/                    # Reusable UI components
+│   │   │   ├── Navbar.jsx
+│   │   │   └── ProtectedRoute.jsx
+│   │   ├── pages/                         # Core view components
+│   │   │   ├── FarmerLogin.jsx            # Authentication entry
+│   │   │   ├── BookFertilizer.jsx         # Partial & full quota booking
+│   │   │   ├── FarmerDashboard.jsx        # Remaining quota & active QR passes
+│   │   │   └── AdminDashboard.jsx         # Regional stock & telemetry
+│   │   ├── services/
+│   │   │   └── api.js                     # Axios HTTP endpoints config
+│   │   ├── App.jsx                        # Route hierarchy
+│   │   ├── index.css                      # Global styling
+│   │   └── main.jsx                       # React DOM root entry
+│   ├── .env                               # Client environment variables
+│   ├── .gitignore                         # Client build ignores
 │   ├── package.json
-│   └── vite.config.js          # Vite build tool configuration
+│   └── vite.config.js
 │
-├── server/                     # Express.js Backend API
-│   ├── database/               # Relational SQL files
-│   │   └── schema.sql          # DB schema creation & seed script
+├── server/                                # Express.js Backend API
+│   ├── database/
+│   │   └── schema.sql                     # MySQL tables, relations & seeds
 │   ├── src/
-│   │   ├── config/             # Database connection setup
-│   │   │   └── db.js
-│   │   ├── controllers/        # Business logic & request handlers
-│   │   │   ├── authController.js
-│   │   │   └── bookingController.js
-│   │   ├── middleware/         # JWT verification & role authorization
-│   │   │   └── authMiddleware.js
-│   │   ├── routes/             # Express route definitions
-│   │   │   ├── authRoutes.js
-│   │   │   └── bookingRoutes.js
-│   │   └── server.js           # Server initialization & entry point
-│   ├── .env                    # DB credentials, JWT secret, server port
-│   ├── .gitignore              # Server gitignore rule definitions
+│   │   ├── config/
+│   │   │   └── db.js                      # MySQL connection pool
+│   │   ├── controllers/
+│   │   │   ├── authController.js          # Farmer/Admin authentication
+│   │   │   └── bookingController.js       # Quota calculation & collection logic
+│   │   ├── middleware/
+│   │   │   └── authMiddleware.js          # JWT & Role-Based Access Control
+│   │   ├── routes/
+│   │   │   ├── authRoutes.js              # Auth endpoints
+│   │   │   └── bookingRoutes.js           # Multi-stage booking & QR routes
+│   │   └── server.js                      # App server initialization
+│   ├── .env                               # Database credentials & JWT secret
+│   ├── .gitignore                         # Server node_modules & env ignores
 │   └── package.json
 │
-└── README.md                   # Complete project documentation
+└── README.md                              # Complete system documentation 
