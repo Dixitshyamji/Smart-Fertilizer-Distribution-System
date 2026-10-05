@@ -1,4 +1,4 @@
-🌾 Smart Fertilizer Distribution System 
+🌾 Smart Fertilizer Distribution System                    # Live Demo((https://smart-fertilizer-distribution-system-1.onrender.com/))
 
 A robust, full-stack web platform built using React.js, Node.js, Express.js, and MySQL designed to digitize, secure, and streamline the distribution of government-subsidized fertilizers to verified farmers. The system automates land-holding quota calculations to eliminate supply-chain leakages, prevents hoarding, and provides a transparent digital booking workflow with QR token verification at godowns.
 
@@ -41,8 +41,7 @@ Backend: Node.js, Express.js
 Database: MySQL (v8.0+) with mysql2 promise-based connection pooling and ACID transaction management
 
 Security: JSON Web Tokens (JWT) for role-based session control, bcrypt for password hashing
-## Live Demo
-Check out the live Demo: [Live App]((https://smart-fertilizer-distribution-system-1.onrender.com/))
+
 
 🗂️ Project Directory Structure
 
